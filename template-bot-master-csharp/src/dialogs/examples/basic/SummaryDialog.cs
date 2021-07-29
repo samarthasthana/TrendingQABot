@@ -20,7 +20,7 @@ namespace Microsoft.Teams.TemplateBotCSharp.Dialogs
             {
                 throw new ArgumentNullException(nameof(context));
             }
-            var messages = QuestionHandler.getMessages();
+            var messages = QuestionHandler.GetMessages();
             var message = context.MakeMessage();
             message.Attachments.Add(GetHeroCard(messages));
             await context.PostAsync(message);
