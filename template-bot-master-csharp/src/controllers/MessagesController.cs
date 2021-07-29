@@ -25,6 +25,7 @@ namespace Microsoft.Teams.TemplateBotCSharp
         /// POST: api/Messages
         /// Receive a message from a user and reply to it
         /// </summary>
+        /// 
         public async Task<HttpResponseMessage> Post([FromBody]Activity activity, CancellationToken cancellationToken)
         {
             var connectorClient = new ConnectorClient(new Uri(activity.ServiceUrl));
@@ -46,16 +47,16 @@ namespace Microsoft.Teams.TemplateBotCSharp
                 //Convert incoming activity text to lower case, to match the intent irrespective of incoming text case
                 activity = Middleware.ConvertActivityTextToLower(activity);
 
-                //Set the OFFICE_365_TENANT_FILTER key in web.config file with Tenant Information
-                //Validate bot for specific teams tenant if any
-                if (Middleware.RejectMessageBasedOnTenant(activity, activity.GetTenantId()))
-                {
-                    Activity replyActivity = activity.CreateReply();
-                    replyActivity.Text = Strings.TenantLevelDeniedAccess;
+                ////Set the OFFICE_365_TENANT_FILTER key in web.config file with Tenant Information
+                ////Validate bot for specific teams tenant if any
+                //if (Middleware.RejectMessageBasedOnTenant(activity, activity.GetTenantId()))
+                //{
+                //    Activity replyActivity = activity.CreateReply();
+                //    replyActivity.Text = Strings.TenantLevelDeniedAccess;
 
-                    await connectorClient.Conversations.ReplyToActivityAsync(replyActivity);
-                    return Request.CreateResponse(HttpStatusCode.OK);
-                }
+                //    await connectorClient.Conversations.ReplyToActivityAsync(replyActivity);
+                //    return Request.CreateResponse(HttpStatusCode.OK);
+                //}
 
                 // Set activity text if request is from an adaptive card submit action
                 activity = Middleware.AdaptiveCardSubmitActionHandler(activity);

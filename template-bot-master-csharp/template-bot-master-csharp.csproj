@@ -184,6 +184,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="middleware\AdaptiveCardSubmitActionHandler.cs" />
     <Compile Include="src\dialogs\examples\basic\AdaptiveCardDialog.cs" />
+    <Compile Include="src\dialogs\examples\basic\CaptureQuestionsDialog.cs" />
+    <Compile Include="src\dialogs\examples\basic\SummaryDialog.cs" />
     <Compile Include="src\dialogs\examples\teams\FetchTeamsInfoDialog.cs" />
     <Compile Include="src\dialogs\examples\teams\UpdateCardMsgSetupDialog.cs" />
     <Compile Include="utility\InvokeHandler.cs" />
@@ -239,6 +241,7 @@
     <Compile Include="public\tab\tabConfig\tab.aspx.designer.cs">
       <DependentUpon>tab.aspx</DependentUpon>
     </Compile>
+    <Compile Include="utility\MessageStore.cs" />
     <Compile Include="utility\TemplateUtility.cs" />
     <Compile Include="utility\WikipediaComposeExtension.cs" />
   </ItemGroup>

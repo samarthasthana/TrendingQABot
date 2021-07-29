@@ -16,6 +16,22 @@ namespace Microsoft.Teams.TemplateBotCSharp.Dialogs
     [Serializable]
     public class RootDialog : DispatchDialog
     {
+        // Main default method to be called every time 
+        [MethodBind]
+        [ScorableGroup(0)]
+        public void Default2(IDialogContext context, IActivity activity)
+        {
+            context.Call(new CaptureQuestionsDialog(), this.EndDefaultDialog);
+        }
+
+        // Main default method to be called every time 
+        [RegexPattern(DialogMatches.SummarizeApiMatch)]
+        [ScorableGroup(0)]
+        public void Summarize(IDialogContext context, IActivity activity)
+        {
+            context.Call(new SummaryDialog(), this.EndDefaultDialog);
+        }
+
         #region Fetch Roster Api Payload Pattern
 
         [RegexPattern(DialogMatches.FetchRosterPayloadMatch)]

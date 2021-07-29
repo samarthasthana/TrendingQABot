@@ -6,6 +6,8 @@
     /// </summary>
     public static class DialogMatches
     {
+        public const string SummarizeApiMatch = "summary";
+
         public const string FetchRosterApiMatch = "names";
 
         public const string FetchRosterPayloadMatch = "roster";
