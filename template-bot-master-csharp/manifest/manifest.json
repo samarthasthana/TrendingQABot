@@ -1,175 +1,67 @@
 {
-  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.schema.json",
-  "manifestVersion": "1.7",
-  "version": "1.5",
-  "id": "<<REGISTERED_BOT_ID>>",
-  "packageName": "com.skype.teams.samples.sampleapp",
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.9",
+  "version": "1.0.0",
+  "id": "5935ed7b-898a-4055-a9a1-50cef33aa0ff",
+  "packageName": "com.package.name",
   "developer": {
     "name": "Microsoft",
     "websiteUrl": "https://www.microsoft.com",
     "privacyUrl": "https://www.microsoft.com/privacy",
-    "termsOfUseUrl": "https://www.microsoft.com/termsofuse"
-  },
-  "name": {
-    "short": "Sample-App-csharp",
-    "full": "Sample-App-csharp"
-  },
-  "description": {
-    "short": "This is a small sample app we made for you!",
-    "full": "This is a small sample app we made for you! This app has samples of all capabilities MS Teams supports."
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/legal/terms-of-use"
   },
   "icons": {
-    "outline": "bot_blue.png",
-    "color": "bot_blue.png"
+    "color": "color.png",
+    "outline": "outline.png"
   },
-  "accentColor": "#3F487F",
+  "name": {
+    "short": "TrendingQAndABot2",
+    "full": "Trending Q&A Bot"
+  },
+  "description": {
+    "short": "Aggregates questions asked on meetings and sorts them by most asked",
+    "full": "Aggregates questions asked on meetings and sorts them by most asked"
+  },
+  "accentColor": "#FFFFFF",
   "staticTabs": [
-      {
-      "contentUrl": "<<BASE_URI>>/public/tab/tabConfig/tab.aspx",
-      "entityId": "statictab",
-      "name": "Bot Info",
+    {
+      "entityId": "conversations",
       "scopes": [
-        "team",
+        "personal"
+      ]
+    },
+    {
+      "entityId": "about",
+      "scopes": [
         "personal"
       ]
     }
   ],
-  "configurableTabs": [
-    {
-      "configurationUrl": "<<BASE_URI>>/public/tab/tabConfig/index.html",
-      "canUpdateConfiguration": false,
-       "scopes": [ "team", "groupchat" ]
-    }
-  ],
   "bots": [
     {
-      "botId": "<<REGISTERED_BOT_ID>>",
-      "isNotificationOnly": false,
-      "scopes": [ "team", "personal", "groupchat" ],
-      "commandLists": [
-        {
-          "scopes": [
-            "team"
-          ],
-          "commands": [
-            {
-              "title": "help",
-              "description": "To show the list of command for user interactions"
-            },
-            {
-              "title": "hello",
-              "description": "Runs the simplest hello dialog"
-            },
-            {
-              "title": "multi dialog 2",
-              "description": "Displays a card with invoke buttons"
-            },
-            {
-              "title": "roster",
-              "description": "Fetches the full roster payload for the current conversation"
-            },
-            {
-              "title": "names",
-              "description": "Lists the names of the users for the current conversation"
-            },
-            {
-              "title": "last dialog",
-              "description": "Shows which dialog sent the last message"
-            },
-            {
-              "title": "send message to 1:1",
-              "description": "Send the user a 1:1 message"
-            },
-            {
-              "title": "setup text message",
-              "description": "Sets up a text message that can be updated"
-            },
-            {
-              "title": "update text message",
-              "description": "Updates a text message once it is setup to be updated"
-            },
-            {
-              "title": "setup card message",
-              "description": "Sets up a card that can be updated"
-            }
-          ]
-        },
-        {
-          "scopes": [
-            "personal"
-          ],
-          "commands": [
-            {
-              "title": "help",
-              "description": "To show the list of command for user interactions"
-            },
-            {
-              "title": "hello",
-              "description": "Runs the simplest hello dialog"
-            },
-            {
-              "title": "multi dialog 2",
-              "description": "Displays a card with invoke buttons"
-            },
-            {
-              "title": "roster",
-              "description": "Fetches the full roster payload for the current conversation"
-            },
-            {
-              "title": "names",
-              "description": "Lists the names of the users for the current conversation"
-            },
-            {
-              "title": "last dialog",
-              "description": "Shows which dialog sent the last message"
-            },
-            {
-              "title": "send message to 1:1",
-              "description": "Send the user a 1:1 message"
-            },
-            {
-              "title": "setup text message",
-              "description": "Sets up a text message that can be updated"
-            },
-            {
-              "title": "update text message",
-              "description": "Updates a text message once it is setup to be updated"
-            },
-            {
-              "title": "setup card message",
-              "description": "Sets up a card that can be updated"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "composeExtensions": [
-    {
-      "botId": "<<REGISTERED_BOT_ID>>",
-      "canUpdateConfiguration": true,
-      "commands": [
-        {
-          "id": "search123",
-          "description": "Find a card",
-          "title": "Search",
-          "initialRun": true,
-          "parameters": [
-            {
-              "title": "query123",
-              "name": "query",
-              "description": "Search string"
-            }
-          ]
-        }
-      ]
+      "botId": "17dae9f7-f646-421f-b627-7af68c7a92e8",
+      "scopes": [
+        "personal",
+        "team",
+        "groupchat"
+      ],
+      "supportsFiles": false,
+      "isNotificationOnly": false
     }
   ],
   "permissions": [
     "identity",
     "messageTeamMembers"
   ],
-  "validDomains": [
-    "<<BASE_URI_DOMAIN>>"
-  ]
+  "validDomains": [],
+  "devicePermissions": [
+    "notifications"
+  ],
+  "webApplicationInfo": {
+    "id": "17dae9f7-f646-421f-b627-7af68c7a92e8",
+    "resource": "https://scRscBasedStoreApp",
+    "applicationPermissions": [
+      "ChannelMessage.Read.Group"
+    ]
+  }
 }

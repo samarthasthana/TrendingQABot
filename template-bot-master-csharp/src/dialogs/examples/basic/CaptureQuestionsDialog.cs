@@ -19,7 +19,7 @@ namespace Microsoft.Teams.TemplateBotCSharp.Dialogs
             if (context.Activity.Type == "message") 
             {
                 var currentMessage = context.Activity.AsMessageActivity().Text;
-                MessageStore.addMessages(currentMessage);
+                QuestionHandler.addMessages(currentMessage);
             }
             var message = context.MakeMessage();
             await context.PostAsync(message);

@@ -241,7 +241,7 @@
     <Compile Include="public\tab\tabConfig\tab.aspx.designer.cs">
       <DependentUpon>tab.aspx</DependentUpon>
     </Compile>
-    <Compile Include="utility\MessageStore.cs" />
+    <Compile Include="utility\QuestionHandler.cs" />
     <Compile Include="utility\TemplateUtility.cs" />
     <Compile Include="utility\WikipediaComposeExtension.cs" />
   </ItemGroup>

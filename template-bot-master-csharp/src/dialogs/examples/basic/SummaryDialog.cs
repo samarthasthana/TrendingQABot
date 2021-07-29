@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -19,7 +20,7 @@ namespace Microsoft.Teams.TemplateBotCSharp.Dialogs
             {
                 throw new ArgumentNullException(nameof(context));
             }
-            var messages = MessageStore.getMessages();
+            var messages = QuestionHandler.getMessages();
             var message = context.MakeMessage();
             message.Attachments.Add(GetHeroCard(messages));
             await context.PostAsync(message);
@@ -28,12 +29,17 @@ namespace Microsoft.Teams.TemplateBotCSharp.Dialogs
 
         private static Bot.Connector.Attachment GetHeroCard(List<string> msgs)
         {
+            var textmsgs = new StringBuilder();
+            foreach(string msg in msgs)
+            {
+                textmsgs.AppendLine(msg);
+            }
             var txtmsg = msgs.ToString();
             var heroCard = new HeroCard
             {
                 Title = "This is the title",
                 Subtitle = "Some sub title",
-                Text = txtmsg
+                Text = textmsgs.ToString()
             };
 
             return heroCard.ToAttachment();
