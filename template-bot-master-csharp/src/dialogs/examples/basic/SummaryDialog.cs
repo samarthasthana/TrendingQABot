@@ -20,17 +20,17 @@ namespace Microsoft.Teams.TemplateBotCSharp.Dialogs
             {
                 throw new ArgumentNullException(nameof(context));
             }
-            var messages = QuestionHandler.GetMessages();
+            var res = QuestionHandler.GetSummaryContent();
             var message = context.MakeMessage();
-            message.Attachments.Add(GetHeroCard(messages));
+            message.Attachments.Add(GetHeroCard(res.responses));
             await context.PostAsync(message);
             context.Done<object>(null);
         }
 
-        private static Bot.Connector.Attachment GetHeroCard(List<string> msgs)
+        private static Bot.Connector.Attachment GetHeroCard(Dictionary<string, List<string>> msgs)
         {
             var textmsgs = new StringBuilder();
-            foreach(string msg in msgs)
+            foreach(var item in msgs)
             {
                 textmsgs.AppendLine(msg);
             }
