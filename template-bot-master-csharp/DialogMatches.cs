@@ -6,6 +6,8 @@
     /// </summary>
     public static class DialogMatches
     {
+        public const string GetTrendingApiMatch = "get-trending";
+
         public const string SummarizeApiMatch = "summary";
 
         public const string FetchRosterApiMatch = "names";

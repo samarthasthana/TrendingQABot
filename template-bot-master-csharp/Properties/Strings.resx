@@ -796,7 +796,7 @@
     <value>Like Removed!!</value>
   </data>
   <data name="BotWelcomeMessage" xml:space="preserve">
-    <value>Hello, I'm your new bot!</value>
+    <value>Hello, you have activated the trendingQnA bot!</value>
   </data>
   <data name="BeginDialog" xml:space="preserve">
     <value>Hello, welcome to begin dialog</value>
