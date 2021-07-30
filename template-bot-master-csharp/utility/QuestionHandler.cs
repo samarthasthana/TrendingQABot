@@ -89,7 +89,8 @@ namespace Microsoft.Teams.TemplateBotCSharp.utility
                 KeywordAnalyzer analyzer = new KeywordAnalyzer();
                 var analyzerResult = analyzer.Analyze(consolidatedText.ToString());
                 List<Keyword> keywords = (from n in analyzerResult.Keywords select n).Take(2).ToList();
-                specimenKeywordPair.Add(sp, keywords.First().Word);
+                var generatedKeyword = keywords.Count > 1 ? $"{keywords.First().Word}, {keywords.Last().Word}" : keywords.First().Word;
+                specimenKeywordPair.Add(sp, generatedKeyword);
             }
         }
 
@@ -132,7 +133,14 @@ namespace Microsoft.Teams.TemplateBotCSharp.utility
                 if (!String.IsNullOrWhiteSpace(key))
                 {
                     buckets.TryGetValue(sp, out List<string> val);
-                    val.Insert(0, sp);
+                    if (val != null)
+                    {
+                        val.Insert(0, sp);
+                    }
+                    else 
+                    {
+                        val = new List<string>() { sp };
+                    }
                     res.responses.Add(key, val);
                 }
             }

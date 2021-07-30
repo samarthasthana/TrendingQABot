@@ -241,9 +241,14 @@
     <Compile Include="public\tab\tabConfig\tab.aspx.designer.cs">
       <DependentUpon>tab.aspx</DependentUpon>
     </Compile>
+    <Compile Include="utility\KeywordAnalyzer.cs" />
+    <Compile Include="utility\KeywordModels.cs" />
     <Compile Include="utility\QuestionHandler.cs" />
+    <Compile Include="utility\Stemmer.cs" />
     <Compile Include="utility\TemplateUtility.cs" />
+    <Compile Include="utility\TitleExtractor.cs" />
     <Compile Include="utility\WikipediaComposeExtension.cs" />
+    <Compile Include="utility\WordScraper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -261,6 +266,7 @@
     <EmbeddedResource Include="Properties\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

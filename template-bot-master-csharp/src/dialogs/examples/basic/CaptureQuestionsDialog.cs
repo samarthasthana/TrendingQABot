@@ -16,14 +16,15 @@ namespace Microsoft.Teams.TemplateBotCSharp.Dialogs
             {
                 throw new ArgumentNullException(nameof(context));
             }
+            string token = string.Empty;
+
             if (context.Activity.Type == "message") 
             {
                 var currentMessage = context.Activity.AsMessageActivity().Text;
                 QuestionHandler.AddMessages(currentMessage);
                 QuestionHandler.ProcessNewMessage(currentMessage);
             }
-            var message = context.MakeMessage();
-            await context.PostAsync(message);
+            await context.PostAsync(context.MakeMessage());
             context.Done<object>(null);
         }
     }
