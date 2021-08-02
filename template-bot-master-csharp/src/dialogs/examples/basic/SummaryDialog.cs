@@ -4,6 +4,7 @@ using Microsoft.Teams.TemplateBotCSharp.Properties;
 using Microsoft.Teams.TemplateBotCSharp.utility;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -22,25 +23,27 @@ namespace Microsoft.Teams.TemplateBotCSharp.Dialogs
             }
             var res = QuestionHandler.GetSummaryContent();
             var message = context.MakeMessage();
-            message.Attachments.Add(GetHeroCard(res.responses));
+            message.Attachments.Add(GetHeroCard(res.responses, res.totalCount));
             await context.PostAsync(message);
             context.Done<object>(null);
         }
 
-        private static Bot.Connector.Attachment GetHeroCard(Dictionary<string, List<string>> msgs)
+        private static Bot.Connector.Attachment GetHeroCard(Dictionary<string, List<string>> msgs, int totalCount)
         {
+            CultureInfo ci = new CultureInfo("en-us");
             var textmsgs = new StringBuilder();
             foreach(var item in msgs)
             {
+                var percentage = (float)item.Value.Count / totalCount;
                 textmsgs.AppendLine($"Question: {item.Value.First()}");
                 textmsgs.AppendLine($"Keywords: {item.Key}");
-                textmsgs.AppendLine($"Count: {item.Value.Count}");
+                textmsgs.AppendLine($"% Occurrence: {percentage.ToString("P", ci)}");
                 textmsgs.AppendLine(" ");
             }
             var heroCard = new HeroCard
             {
                 Title = "Trending Q&A",
-                Subtitle = "List of top questions, keywords and count",
+                Subtitle = "List of top questions, keywords and % occurrence",
                 Text = textmsgs.ToString()
             };
 

@@ -117,15 +117,19 @@ namespace Microsoft.Teams.TemplateBotCSharp.utility
         public class SummaryContent
         {
             public Dictionary<string, List<string>> responses;
+
+            public int totalCount;
             public SummaryContent()
             {
                 responses = new Dictionary<string, List<string>>();
+                totalCount = 0;
             }
         }
 
         public static SummaryContent GetSummaryContent()
         {
             var res = new SummaryContent();
+            var totalCount = 0;
             FindKeywordsForBuckets();
             foreach (var sp in specimen)
             {
@@ -141,9 +145,11 @@ namespace Microsoft.Teams.TemplateBotCSharp.utility
                     {
                         val = new List<string>() { sp };
                     }
+                    totalCount += val.Count;
                     res.responses.Add(key, val);
                 }
             }
+            res.totalCount = totalCount;
             return res;
         }
 
