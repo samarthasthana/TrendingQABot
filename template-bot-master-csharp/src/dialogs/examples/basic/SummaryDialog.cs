@@ -32,14 +32,15 @@ namespace Microsoft.Teams.TemplateBotCSharp.Dialogs
             var textmsgs = new StringBuilder();
             foreach(var item in msgs)
             {
-                textmsgs.AppendFormat("<strong>Question:</strong> {0}", item.Value.First());
-                textmsgs.AppendFormat("<strong>Keywords:</strong> {0}", item.Key);
-                textmsgs.AppendFormat("<strong>Count:</strong> {0}", item.Value.Count);
+                textmsgs.AppendLine($"Question: {item.Value.First()}");
+                textmsgs.AppendLine($"Keywords: {item.Key}");
+                textmsgs.AppendLine($"Count: {item.Value.Count}");
+                textmsgs.AppendLine(" ");
             }
             var heroCard = new HeroCard
             {
                 Title = "Trending Q&A",
-                Subtitle = "List of top questions, keywords and count of similar questions",
+                Subtitle = "List of top questions, keywords and count",
                 Text = textmsgs.ToString()
             };
 
